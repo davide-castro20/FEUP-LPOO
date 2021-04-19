@@ -1,0 +1,37 @@
+@startuml observers
+
+skinparam classAttributeIconSize 0
+skinparam class {
+    BackgroundColor White
+    ArrowColor Black
+    BorderColor Black
+}
+
+interface LevelObserver{
+    + void levelChanged()
+}
+
+class Game{
+    Level level
+    Gui gui
+    + void levelChanged()
+}
+note top of Game : levelchanged calls\ngui.draw()
+
+class Level{
+    List<LevelObservers> observers
+    + void notifyObservers()
+}
+note top of Level : notifyObservers calls\nobserver.levelChanged()
+
+class Gui{
+    +void draw()
+}
+
+class Game implements LevelObserver
+
+Level o--> LevelObserver
+Game --> Level
+Game --> Gui
+
+@enduml

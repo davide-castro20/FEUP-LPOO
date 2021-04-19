@@ -1,0 +1,14 @@
+5,5
+0
+background,.
+player,@
+wall,W
+objective,o
+key1,k
+door1,D
+::::
+..k..
+.W..o
+D.@kD
+.....
+.D.W.

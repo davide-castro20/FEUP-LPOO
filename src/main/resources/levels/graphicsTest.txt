@@ -1,0 +1,13 @@
+background,#2C210C
+player,#00FF00,2202
+wall,#624511,2588
+objective,#00FFFF,004F
+key,#FF0000,#00FF00,26B7
+door,#FF0000,#00FF00,2360
+horzSlider,#FFFFFF,21D4
+vertSlider,#FFFFFF,21D5
+colorseqbutton,#00FF00,#FFDE58,0042
+tilepuzzlebutton,#00FF00,#FF58FF,0054
+findseqbutton,#00FF00,#FF0000,0046
+button,#0030EE,#00EECE,0048
+buttondoor,#FF0000,233B

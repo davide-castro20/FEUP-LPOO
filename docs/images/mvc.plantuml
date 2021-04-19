@@ -1,0 +1,58 @@
+@startuml MVC
+
+skinparam classAttributeIconSize 0
+skinparam class {
+    BackgroundColor White
+    ArrowColor Black
+    BorderColor Black
+}
+skinparam linetype ortho
+
+package Model <<Rectangle>> {
+    class Entity{
+        Position position
+    }
+
+    class Level{
+        List<LevelObservers> observers
+        + void notifyObservers()
+    }
+}
+note top of Model : Contém os dados
+
+package View <<Rectangle>> {
+    class Gui{
+        +void draw()
+    }
+
+    class InputHandler{
+        +Command getNextCommand()
+    }
+}
+note bottom of View : Desenha o Model\nRecebe input e envia ao Controller
+
+package Controller <<Rectangle>> {
+    interface Command {
+        + void execute()
+    }
+
+    interface LevelObserver{
+        + void levelChanged()
+    }
+
+    class Game{
+        Level level
+        Gui gui
+        + void levelChanged()
+    }
+
+    class Game implements LevelObserver
+}
+note top of Controller : Controller altera o Model\nAvisa a View para desenhar
+
+
+View -d- Model
+Model -r-- Controller
+Controller -- View
+
+@enduml

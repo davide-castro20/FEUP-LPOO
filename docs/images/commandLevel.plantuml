@@ -1,0 +1,71 @@
+@startuml commandLevel
+
+skinparam classAttributeIconSize 0
+skinparam class {
+    BackgroundColor White
+    ArrowColor Black
+    BorderColor Black
+}
+
+interface Command{
+    + void execute()
+}
+
+class MovePlayerDownCommand{
+    + MovePlayerDownCommand(Level)
+    + void execute()
+}
+
+class MovePlayerRightCommand{
+    + MovePlayerRightCommand(Level)
+    + void execute()
+}
+
+class MovePlayerLeftCommand{
+    + MovePlayerLeftCommand(Level)
+    + void execute()
+}
+
+class MovePlayerUpCommand{
+    + MovePlayerUpCommand(Level)
+    + void execute()
+}
+
+class InteractCommand{
+    + InteractCommand(Level)
+    + void execute()
+}
+
+class ExitLevelCommand{
+    + ExitLevelCommand(Level)
+    + void execute()
+}
+
+class Level{
+    +void movePlayerTo()
+    +void goNextLevel()
+    +Interactable checkInteractables()
+}
+
+class InputHandler{
+    +Command getNextCommand()
+}
+
+
+class MovePlayerDownCommand implements Command
+class MovePlayerLeftCommand implements Command
+class MovePlayerRightCommand implements Command
+class MovePlayerUpCommand implements Command
+class InteractCommand implements Command
+class ExitLevelCommand implements Command
+
+Level <-d- MovePlayerDownCommand
+Level <-d- MovePlayerUpCommand
+Level <-d- MovePlayerRightCommand
+Level <-d- MovePlayerLeftCommand
+Level <-d- InteractCommand
+Level <-d- ExitLevelCommand
+
+InputHandler -l-> Command
+
+@enduml
